@@ -1,19 +1,29 @@
 
-#¶Ë¿ÚºÅ
+#ï¿½Ë¿Úºï¿½
 server:
   port: 8080
 
 spring:
-  #Ó¦ÓÃÃû
+  #Ó¦ï¿½ï¿½ï¿½ï¿½
   application:
     name: test4service
-  #±àÂë¸ñÊ½
+  #ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
   tomcat:
     uri-encoding: utf-8
-  #Êý¾Ý¿âÏà¹ØÅäÖÃ
+  #ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.98.39.115:3306/Test4?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: zhou
-    
+
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 60
+      auto-commit: true
+      idle-timeout: 60000
+      pool-name: DateBookHikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1

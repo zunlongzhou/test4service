@@ -22,12 +22,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean findByNameAndPassword(String Name, String Password)
+    public Integer findByNameAndPassword(String Name, String Password)
     {
-        if(userRepo.findByNameAndPassword(Name,Password)==null){
-            return false;
+        User user = userRepo.findByNameAndPassword(Name,Password);
+        if(user==null){
+            return -1;
         }
-        return true;
+        return user.getRole();
 
     }
 

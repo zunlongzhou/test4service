@@ -14,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/login")
-    public Boolean login(@RequestParam("name") String name, @RequestParam("password") String password)
+    public Integer login(@RequestParam("name") String name, @RequestParam("password") String password)
     {
         return userService.findByNameAndPassword(name,password);
     }
