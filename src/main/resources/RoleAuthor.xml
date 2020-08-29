@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.dhu.test4service.pojo.RoleAuthor">
+        <table name="role_author" schema="Test4" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <many-to-one name="roleByRoleId" optional="true" target-entity="com.dhu.test4service.pojo.Role">
+                <join-column name="role_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <many-to-one name="authorityByAuthorId" optional="true" target-entity="com.dhu.test4service.pojo.Authority">
+                <join-column name="author_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

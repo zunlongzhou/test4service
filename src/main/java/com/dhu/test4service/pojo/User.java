@@ -1,7 +1,5 @@
 package com.dhu.test4service.pojo;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +10,10 @@ public class User {
     private int id;
     private String name;
     private String password;
-    private Integer apartment;
     private Integer role;
+    private String tel;
+    private String mailbox;
+    private String address;
 
     @Id
     @Column(name = "id")
@@ -46,16 +46,6 @@ public class User {
     }
 
     @Basic
-    @Column(name = "apartment")
-    public Integer getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Integer apartment) {
-        this.apartment = apartment;
-    }
-
-    @Basic
     @Column(name = "role")
     public Integer getRole() {
         return role;
@@ -63,6 +53,36 @@ public class User {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    @Basic
+    @Column(name = "tel")
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    @Basic
+    @Column(name = "mailbox")
+    public String getMailbox() {
+        return mailbox;
+    }
+
+    public void setMailbox(String mailbox) {
+        this.mailbox = mailbox;
+    }
+
+    @Basic
+    @Column(name = "address")
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -75,8 +95,10 @@ public class User {
         if (id != user.id) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (apartment != null ? !apartment.equals(user.apartment) : user.apartment != null) return false;
         if (role != null ? !role.equals(user.role) : user.role != null) return false;
+        if (tel != null ? !tel.equals(user.tel) : user.tel != null) return false;
+        if (mailbox != null ? !mailbox.equals(user.mailbox) : user.mailbox != null) return false;
+        if (address != null ? !address.equals(user.address) : user.address != null) return false;
 
         return true;
     }
@@ -86,19 +108,22 @@ public class User {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (apartment != null ? apartment.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (tel != null ? tel.hashCode() : 0);
+        result = 31 * result + (mailbox != null ? mailbox.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
     }
 
-    public User(){
+    public User(){}
 
-    }
-
-    public User(String name, String password, Integer apartment, Integer role){
+    public User(String name,String password,Integer role,String tel,String mailbox,String address){
+        this.id=id;
         this.name=name;
         this.password=password;
-        this.apartment=apartment;
         this.role=role;
+        this.tel=tel;
+        this.mailbox=mailbox;
+        this.address=address;
     }
 }

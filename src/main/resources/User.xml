@@ -14,11 +14,17 @@
             <basic name="password">
                 <column name="password"/>
             </basic>
-            <basic name="apartment">
-                <column name="apartment"/>
-            </basic>
             <basic name="role">
                 <column name="role"/>
+            </basic>
+            <basic name="tel">
+                <column name="tel"/>
+            </basic>
+            <basic name="mailbox">
+                <column name="mailbox"/>
+            </basic>
+            <basic name="address">
+                <column name="address"/>
             </basic>
         </attributes>
     </entity>
