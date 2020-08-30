@@ -37,4 +37,31 @@ public class UserController {
         Integer op=userService.getRole(name);
         return op;
     }
+
+    @GetMapping(value = "/admin")
+    public List<User> UserInfo(){
+        List<User> list=userService.findAll();
+        for(int i=0;i<list.size();i++){
+            list.get(i).setPassword(null);
+            switch (list.get(i).getRole()){
+                case 1:
+                {
+                    list.get(i).setPassword("管理员");
+                    break;
+                }
+                case 2:
+                {
+                    list.get(i).setPassword("教师");
+                    break;
+                }
+                case 3:
+                {
+                    list.get(i).setPassword("学生");
+                    break;
+                }
+            }
+        }
+
+        return list;
+    }
 }
