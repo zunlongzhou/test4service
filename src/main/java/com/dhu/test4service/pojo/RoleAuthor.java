@@ -1,12 +1,19 @@
 package com.dhu.test4service.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
+@ApiModel("角色-权限对应表实体类")
 @Entity
 @Table(name = "role_author", schema = "Test4", catalog = "")
 public class RoleAuthor {
+    @ApiModelProperty("对应关系id")
     private int id;
+    @ApiModelProperty("角色")
     private Role roleByRoleId;
+    @ApiModelProperty("权限")
     private Authority authorityByAuthorId;
 
     @Id

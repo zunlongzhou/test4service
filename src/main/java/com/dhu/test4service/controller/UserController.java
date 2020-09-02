@@ -5,12 +5,16 @@ import com.dhu.test4service.dao.RoleRepository;
 import com.dhu.test4service.pojo.Role;
 import com.dhu.test4service.pojo.RoleAuthor;
 import com.dhu.test4service.pojo.User;
+import com.dhu.test4service.service.RoleService;
 import com.dhu.test4service.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "用户及账户相关操作")
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
@@ -18,13 +22,17 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
+    @ApiOperation("用户登录")
     @GetMapping(value = "/login")
     public Integer login(@RequestParam("name") String name, @RequestParam("password") String password)
     {
         return userService.findByNameAndPassword(name,password);
     }
 
+    @ApiOperation("用户注册")
     @GetMapping(value = "/register")
     public User register(@RequestParam("name") String name, @RequestParam("password") String password)
     {
@@ -32,12 +40,21 @@ public class UserController {
         return userService.save(user1);
     }
 
+    @ApiOperation("获取用户角色")
     @GetMapping("/role")
     public Integer getRole(@RequestParam("name") String name){
         Integer op=userService.getRole(name);
         return op;
     }
 
+    @ApiOperation("获取用户权限")
+    @GetMapping("/author")
+    public List<RoleAuthor> getAuthor(@RequestParam("name") String name){
+        Integer op=userService.getRole(name);
+        return roleService.findAuthorByRole(op);
+    }
+
+    @ApiOperation("获取所有用户基本信息")
     @GetMapping(value = "/admin")
     public List<User> UserInfo(){
         List<User> list=userService.findAll();
@@ -64,4 +81,6 @@ public class UserController {
 
         return list;
     }
+
+
 }

@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Main-Class: com.dhu.test4service.Test4serviceApplication
+Class-Path: mysql-connector-java-8.0.21.jar spring-boot-starter-2.3.2.RE
+ LEASE.jar jackson-core-2.11.1.jar spring-boot-starter-web-services-2.3.
+ 2.RELEASE.jar log4j-to-slf4j-2.13.3.jar logback-core-1.2.3.jar byte-bud
+ dy-1.10.13.jar hibernate-commons-annotations-5.1.0.Final.jar spring-boo
+ t-starter-tomcat-2.3.2.RELEASE.jar spring-oxm-5.2.8.RELEASE.jar spring-
+ jcl-5.2.8.RELEASE.jar tomcat-embed-websocket-9.0.37.jar spring-boot-2.3
+ .2.RELEASE.jar jakarta.persistence-api-2.2.3.jar jakarta.el-3.0.3.jar j
+ akarta.jws-api-2.1.0.jar spring-boot-starter-logging-2.3.2.RELEASE.jar 
+ spring-boot-starter-data-jpa-2.3.2.RELEASE.jar jackson-module-parameter
+ -names-2.11.1.jar jakarta.activation-1.2.2.jar hibernate-core-5.4.18.Fi
+ nal.jar jul-to-slf4j-1.7.30.jar spring-beans-5.2.8.RELEASE.jar txw2-2.3
+ .3.jar spring-tx-5.2.8.RELEASE.jar spring-boot-autoconfigure-2.3.2.RELE
+ ASE.jar jaxb-runtime-2.3.3.jar spring-boot-starter-web-2.3.2.RELEASE.ja
+ r spring-data-jpa-2.3.2.RELEASE.jar spring-data-commons-2.3.2.RELEASE.j
+ ar spring-context-5.2.8.RELEASE.jar snakeyaml-1.26.jar spring-web-5.2.8
+ .RELEASE.jar jackson-datatype-jdk8-2.11.1.jar jackson-annotations-2.11.
+ 1.jar spring-jdbc-5.2.8.RELEASE.jar spring-orm-5.2.8.RELEASE.jar javass
+ ist-3.24.0-GA.jar istack-commons-runtime-3.0.11.jar jboss-logging-3.4.1
+ .Final.jar classmate-1.5.1.jar jakarta.transaction-api-1.3.3.jar dom4j-
+ 2.1.3.jar jackson-datatype-jsr310-2.11.1.jar tomcat-embed-core-9.0.37.j
+ ar spring-expression-5.2.8.RELEASE.jar spring-boot-starter-aop-2.3.2.RE
+ LEASE.jar HikariCP-3.4.5.jar spring-boot-starter-json-2.3.2.RELEASE.jar
+  spring-aspects-5.2.8.RELEASE.jar log4j-api-2.13.3.jar jandex-2.1.3.Fin
+ al.jar spring-aop-5.2.8.RELEASE.jar spring-ws-core-3.0.9.RELEASE.jar sp
+ ring-xml-3.0.9.RELEASE.jar antlr-2.7.7.jar saaj-impl-1.5.2.jar jakarta.
+ xml.soap-api-1.4.2.jar jackson-databind-2.11.1.jar jakarta.annotation-a
+ pi-1.3.5.jar logback-classic-1.2.3.jar spring-boot-starter-jdbc-2.3.2.R
+ ELEASE.jar spring-webmvc-5.2.8.RELEASE.jar jakarta.xml.bind-api-2.3.3.j
+ ar stax-ex-1.8.3.jar slf4j-api-1.7.30.jar aspectjweaver-1.9.6.jar sprin
+ g-core-5.2.8.RELEASE.jar jakarta.activation-api-1.2.2.jar jakarta.xml.w
+ s-api-2.3.3.jar
+

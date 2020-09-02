@@ -1,18 +1,29 @@
 package com.dhu.test4service.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@ApiModel("用户实体类")
 @Entity
 public class User {
+    @ApiModelProperty("用户id")
     private int id;
+    @ApiModelProperty("用户名")
     private String name;
+    @ApiModelProperty("密码")
     private String password;
+    @ApiModelProperty("权限id")
     private Integer role;
+    @ApiModelProperty("电话")
     private String tel;
+    @ApiModelProperty("邮箱")
     private String mailbox;
+    @ApiModelProperty("住址")
     private String address;
 
     @Id

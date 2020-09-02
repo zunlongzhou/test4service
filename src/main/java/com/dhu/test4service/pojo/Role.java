@@ -1,13 +1,19 @@
 package com.dhu.test4service.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@ApiModel("角色实体类")
 @Entity
 public class Role {
+    @ApiModelProperty("角色id")
     private int id;
+    @ApiModelProperty("角色名")
     private String name;
 
     @Id

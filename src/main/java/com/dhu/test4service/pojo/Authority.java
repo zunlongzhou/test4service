@@ -1,13 +1,19 @@
 package com.dhu.test4service.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@ApiModel("权限实体类")
 @Entity
 public class Authority {
+    @ApiModelProperty("权限id")
     private int id;
+    @ApiModelProperty("权限名")
     private String power;
 
     @Id
