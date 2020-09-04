@@ -13,4 +13,6 @@ public interface UserService {
     User save(User user);
 
     Integer getRole(String Name);
+
+    Integer updateUserRole(int id,int role);
 }

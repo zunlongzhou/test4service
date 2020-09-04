@@ -17,4 +17,8 @@ public interface RoleService {
     List<RoleAuthor> findAuthorByRole(int id);
 
     RoleAuthor addRoleAuthor(int roleId,int authorId);
+
+    Integer deleteRoleAuthor(int roleId,int authorId);
+
+    Integer deleteRoleAuthorById(int id);
 }

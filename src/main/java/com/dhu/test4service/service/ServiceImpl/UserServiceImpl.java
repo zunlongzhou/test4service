@@ -48,4 +48,10 @@ public class UserServiceImpl implements UserService {
         return user.getRole();
 
     }
+
+    @Override
+    public Integer updateUserRole(int id,int role)
+    {
+        return userRepo.updateUserRole(id,role);
+    }
 }

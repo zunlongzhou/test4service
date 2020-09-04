@@ -34,9 +34,9 @@ public class UserController {
 
     @ApiOperation("用户注册")
     @GetMapping(value = "/register")
-    public User register(@RequestParam("name") String name, @RequestParam("password") String password)
+    public User register(@RequestParam("name") String name, @RequestParam("password") String password,@RequestParam("role")int role)
     {
-        User user1=new User(name,password,2,null,null,null);
+        User user1=new User(name,password,role,null,null,null);
         return userService.save(user1);
     }
 
@@ -76,10 +76,22 @@ public class UserController {
                     list.get(i).setPassword("学生");
                     break;
                 }
+                case 4:
+                {
+                    list.get(i).setPassword("游客");
+                    break;
+                }
             }
         }
 
         return list;
+    }
+
+    @ApiOperation("更新用户角色")
+    @GetMapping(value = "/uprole")
+    public Integer updateUserRole(@RequestParam("id") int id,@RequestParam("role") int role)
+    {
+        return userService.updateUserRole(id,role);
     }
 
 

@@ -60,4 +60,20 @@ public class RoleServiceImpl implements RoleService {
         roleAuthor.setAuthorityByAuthorId(author);
         return roleAuthorRepository.save(roleAuthor);
     }
+
+    @Override
+    public Integer deleteRoleAuthor(int roleId,int authorId) {
+        return roleAuthorRepository.deleteByRoleAuthor(roleId,authorId);
+    }
+
+    @Override
+    public Integer deleteRoleAuthorById(int id){
+        try{
+            Integer temp=roleAuthorRepository.deleteById(id);
+        }catch(Exception e){
+            return -1;
+        }
+
+        return 1;
+    }
 }

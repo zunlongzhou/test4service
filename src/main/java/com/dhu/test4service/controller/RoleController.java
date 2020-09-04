@@ -56,4 +56,17 @@ public class RoleController {
         return roleService.addRoleAuthor(roleId,authorId);
     }
 
+    @ApiOperation("删除某角色的某权限")
+    @GetMapping(value = "/delAuthor")
+    public Integer  delAuthor(@RequestParam("roleId") int roleId, @RequestParam("authorId") int authorId)
+    {
+        return roleService.deleteRoleAuthor(roleId, authorId);
+    }
+
+    @ApiOperation("删除某角色的某权限-多态-只要传id")
+    @GetMapping(value = "/deleteAuthor")
+    public Integer  delAuthor(@RequestParam("id") int id)
+    {
+        return roleService.deleteRoleAuthorById(id);
+    }
 }

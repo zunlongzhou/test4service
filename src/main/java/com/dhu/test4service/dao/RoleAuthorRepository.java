@@ -19,4 +19,11 @@ public interface RoleAuthorRepository extends JpaRepository<RoleAuthor,Integer> 
     List<RoleAuthor> findByRoleByRoleId(int roleByRoleId);
 
     RoleAuthor save(RoleAuthor roleAuthor);
+
+    @Transactional
+    @Modifying
+    @Query(value = "delete from role_author where role_id=?1 and author_id=?2",nativeQuery = true)
+    Integer deleteByRoleAuthor(int roleId,int authorId);
+
+    Integer deleteById(int id);
 }
