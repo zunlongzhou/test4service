@@ -8,7 +8,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    Integer findByNameAndPassword(String Name, String Password);
+    User findByNameAndPassword(String Name, String Password);
 
     User save(User user);
 

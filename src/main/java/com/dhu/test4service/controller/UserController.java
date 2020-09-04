@@ -27,7 +27,7 @@ public class UserController {
 
     @ApiOperation("用户登录")
     @GetMapping(value = "/login")
-    public Integer login(@RequestParam("name") String name, @RequestParam("password") String password)
+    public User login(@RequestParam("name") String name, @RequestParam("password") String password)
     {
         return userService.findByNameAndPassword(name,password);
     }
