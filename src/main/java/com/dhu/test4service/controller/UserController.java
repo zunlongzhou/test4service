@@ -94,5 +94,41 @@ public class UserController {
         return userService.updateUserRole(id,role);
     }
 
+    @ApiOperation("更新用户姓名")
+    @GetMapping(value = "/upname")
+    public Integer updateUserName(@RequestParam("id") int id,@RequestParam("name") String name)
+    {
+        return userService.updateUserName(id,name);
+    }
+
+    @ApiOperation("更新用户密码")
+    @GetMapping(value = "/uppwd")
+    public Integer updateUserPassword(@RequestParam("id") int id,@RequestParam("password") String password)
+    {
+        return userService.updateUserPassword(id,password);
+    }
+
+    @ApiOperation("更新用户电话")
+    @GetMapping(value = "/uptel")
+    public Integer updateUserTel(@RequestParam("id") int id,@RequestParam("tel") String tel)
+    {
+        return userService.updateUserTel(id,tel);
+    }
+
+    @ApiOperation("更新用户邮箱")
+    @GetMapping(value = "/upmailbox")
+    public Integer updateUserMailbox(@RequestParam("id") int id,@RequestParam("mailbox") String mailbox)
+    {
+        return userService.updateUserMailbox(id,mailbox);
+    }
+
+    @ApiOperation("更新用户地址")
+    @GetMapping(value = "/upaddress")
+    public Integer updateUserRole(@RequestParam("id") int id,@RequestParam("address") String address)
+    {
+        return userService.updateUserAddress(id,address);
+    }
+
+
 
 }

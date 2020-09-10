@@ -49,4 +49,19 @@ public class UserServiceImpl implements UserService {
     {
         return userRepo.updateUserRole(id,role);
     }
+
+    @Override
+    public Integer updateUserName(int id,String name){return userRepo.updateUserName(id,name);}
+
+    @Override
+    public Integer updateUserPassword(int id,String password){return userRepo.updateUserPassword(id,password);}
+
+    @Override
+    public Integer updateUserTel(int id,String tel){return userRepo.updateUserTel(id,tel);}
+
+    @Override
+    public Integer updateUserMailbox(int id,String mailbox){return userRepo.updateUserMailbox(id,mailbox);}
+
+    @Override
+    public Integer updateUserAddress(int id,String address){return userRepo.updateUserAddress(id,address);}
 }

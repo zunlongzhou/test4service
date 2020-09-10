@@ -15,4 +15,15 @@ public interface UserService {
     Integer getRole(String Name);
 
     Integer updateUserRole(int id,int role);
+
+    Integer updateUserName(int id,String name);
+
+    Integer updateUserPassword(int id,String password);
+
+    Integer updateUserTel(int id,String tel);
+
+    Integer updateUserMailbox(int id,String mailbox);
+
+    Integer updateUserAddress(int id,String address);
+
 }
