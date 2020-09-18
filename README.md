@@ -31,6 +31,12 @@ ex:
 http://localhost:8080/swagger-ui.html
 ```
 
+### 缓存
 
+集成了Redis，访问信息在application.yaml中可以看到
+
+暂时还没有使用缓存，只是实现了一个demo接口
+
+/course/redis
 
 > tip：更新日志放在[updateLog.md](updateLog.md)中
