@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findById(int id){
+        return userRepo.findById(id);
+    }
+
+    @Override
     public Integer getRole(String Name)
     {
         User user=userRepo.findByName(Name);

@@ -21,6 +21,8 @@ public interface userRepository extends JpaRepository<User, Integer> {
 
     User findByName(String name);
 
+    User findById(int id);
+
     @Transactional
     @Modifying
     @Query(value = "update user set role=?2 where id=?1",nativeQuery = true)

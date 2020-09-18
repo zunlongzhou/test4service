@@ -1,16 +1,11 @@
-
-#�˿ں�
 server:
   port: 8080
 
 spring:
-  #Ӧ����
   application:
     name: test4service
-  #�����ʽ
   tomcat:
     uri-encoding: utf-8
-  #���ݿ��������
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.98.39.115:3306/Test4?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
@@ -27,3 +22,7 @@ spring:
       max-lifetime: 60000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+  redis:
+    host: 39.98.39.115
+    port: 6379
+    password: zhou
