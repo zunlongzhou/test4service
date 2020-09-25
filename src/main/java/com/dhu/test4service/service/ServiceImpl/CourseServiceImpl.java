@@ -84,4 +84,22 @@ public class CourseServiceImpl implements CourseService {
         }
         return Teacher;
     }
+
+    public List<Boolean> findStuCourse(int id){
+        List<Course> courses=courseRepository.findAll();
+        List<CourseStu> stu=courseStuRepo.findByStuId(id);
+
+        List<Boolean> res=new ArrayList<>();
+        for(Course c:courses){
+            Boolean flag=false;
+            for(CourseStu s:stu){
+                if(s.getCourseId()==c.getId()){
+                    flag=true;
+                    break;
+                }
+            }
+            res.add(flag);
+        }
+        return res;
+    }
 }

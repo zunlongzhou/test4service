@@ -16,4 +16,6 @@ public interface CourseService {
     JSONArray findAllCourseDetail();
 
     List<User> findCourseStu(int id);
+
+    List<Boolean> findStuCourse(int id);
 }

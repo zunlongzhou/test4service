@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.dhu.test4service.pojo.CollegeCourse">
+        <table name="college_course" schema="Test4" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="collegeId">
+                <column name="college_id"/>
+            </basic>
+            <basic name="collegeName">
+                <column name="college_name"/>
+            </basic>
+            <basic name="courseId">
+                <column name="course_id"/>
+            </basic>
+            <basic name="experimentId">
+                <column name="experiment_id"/>
+            </basic>
+            <basic name="experimentName">
+                <column name="experiment_name"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
