@@ -33,4 +33,10 @@ public class CollegeController {
     public JSONArray findAllFormat(){
         return collegeService.findAllFormat();
     }
+
+    @ApiOperation("返回学院数据-包括该学院下的课程")
+    @GetMapping(value = "findCollegeCourse")
+    public JSONArray findCollegeCourse(){
+        return collegeService.getAllCollegeDetail();
+    }
 }

@@ -3,10 +3,8 @@ package com.dhu.test4service.service.ServiceImpl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.dhu.test4service.dao.CollegeCourseRepository;
-import com.dhu.test4service.dao.CourseRepository;
-import com.dhu.test4service.pojo.CollegeCourse;
-import com.dhu.test4service.pojo.Course;
+import com.dhu.test4service.dao.*;
+import com.dhu.test4service.pojo.*;
 import com.dhu.test4service.service.CollegeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +20,52 @@ public class CollegeServiceImpl implements CollegeService {
     private CollegeCourseRepository collegeCourseRepository;
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private CollegeRepository collegeRepository;
+    @Autowired
+    private CourseTeacherRepository teacherRepository;
+    @Autowired
+    private userRepository usRepo;
+
+    @Override
+    public JSONArray getAllCollegeDetail(){
+        JSONArray res=new JSONArray();
+        List<College> colleges=collegeRepository.findAll();
+
+        for(College co:colleges){
+            JSONObject collegeDetail=new JSONObject();
+            collegeDetail.put("id",co.getId());
+            collegeDetail.put("name",co.getName());
+            collegeDetail.put("tel",co.getTel());
+            collegeDetail.put("address",co.getAddress());
+            collegeDetail.put("introduction",co.getIntroduction());
+
+            List<CollegeCourse> cc=collegeCourseRepository.findByCollegeId(co.getId());
+            JSONArray courses=new JSONArray();
+            for(CollegeCourse temp:cc){
+                JSONObject op=new JSONObject();
+                int courseID=temp.getCourseId();
+                Course College_course=courseRepository.findById(courseID);
+                op.put("id",College_course.getId());
+                op.put("name",College_course.getName());
+                op.put("time",College_course.getTime());
+                List<CourseTea> ct= teacherRepository.findByCourseId(courseID);
+                String TeacherName="";
+                if(ct.size()!=0){
+                    int TeaID=ct.get(0).getTeaId();
+                    User user=usRepo.findById(TeaID);
+                    TeacherName=user.getName();
+                }
+                op.put("teacher",TeacherName);
+
+                courses.add(op);
+            }
+            collegeDetail.put("course",courses);
+            res.add(collegeDetail);
+        }
+
+        return res;
+    }
 
     @Override
     public List<CollegeCourse> findAll(){

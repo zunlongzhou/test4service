@@ -25,4 +25,10 @@ public class CourseStuController {
         courseStu.setStuId(StuID);
         return courseStuService.save(courseStu);
     }
+
+    @ApiOperation("学生退课")
+    @GetMapping(value = "/delete")
+    public Integer deleteCS(@RequestParam("courseID") int courseID,@RequestParam("StuID") int StuID){
+        return courseStuService.deleteCS(courseID,StuID);
+    }
 }

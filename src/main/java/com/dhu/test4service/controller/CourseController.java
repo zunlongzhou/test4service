@@ -49,10 +49,16 @@ public class CourseController {
         return courseService.findCourseStu(id);
     }
 
-    @ApiOperation("返回某个学生的所有选课信息")
+    @ApiOperation("返回某个学生的所有选课信息-布尔值-用来表示是否选了该课")
     @GetMapping(value = "/getSC")
     public List<Boolean> getSC(@RequestParam("id")int id){
         return courseService.findStuCourse(id);
+    }
+
+    @ApiOperation("返回某个学生选课信息-课程详细内容")
+    @GetMapping(value = "/getSCDetail")
+    public JSONArray getSCDetail(@RequestParam("id")int id){
+        return courseService.findStuCourseDetail(id);
     }
 
     @ApiOperation("Redis的测试操作")

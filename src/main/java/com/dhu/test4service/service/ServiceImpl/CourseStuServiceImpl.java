@@ -32,4 +32,9 @@ public class CourseStuServiceImpl implements CourseStuService {
     public CourseStu save(CourseStu courseStu){
         return courseStuRepo.save(courseStu);
     }
+
+    @Override
+    public Integer deleteCS(int courseID,int StuID){
+        return courseStuRepo.deleteCourseStu(courseID,StuID);
+    }
 }

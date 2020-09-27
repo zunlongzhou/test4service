@@ -12,4 +12,6 @@ public interface CourseStuService {
     List<CourseStu> findByStuId(int stuID);
 
     CourseStu save(CourseStu courseStu);
+
+    Integer deleteCS(int courseID,int StuID);
 }

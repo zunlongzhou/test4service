@@ -102,4 +102,28 @@ public class CourseServiceImpl implements CourseService {
         }
         return res;
     }
+
+    public JSONArray findStuCourseDetail(int id){
+        JSONArray res=new JSONArray();
+        List<CourseStu> stu=courseStuRepo.findByStuId(id);
+        for(CourseStu cs:stu){
+            JSONObject course=new JSONObject();
+            int courseID=cs.getCourseId();
+            Course c=courseRepository.findById(courseID);
+            course.put("id",c.getId());
+            course.put("name",c.getName());
+            course.put("time",c.getTime());
+
+            List<CourseTea> ct= courseTeaRepo.findByCourseId(courseID);
+            String teacherName="";
+            if(ct.size()>0){
+                int teacherID=ct.get(0).getTeaId();
+                teacherName=userRepo.findById(teacherID).getName();
+            }
+            course.put("teacher",teacherName);
+            res.add(course);
+        }
+
+        return res;
+    }
 }
