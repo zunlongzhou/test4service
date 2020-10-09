@@ -23,8 +23,6 @@ public class CollegeServiceImpl implements CollegeService {
     @Autowired
     private CollegeRepository collegeRepository;
     @Autowired
-    private CourseTeacherRepository teacherRepository;
-    @Autowired
     private userRepository usRepo;
 
     @Override
@@ -49,14 +47,7 @@ public class CollegeServiceImpl implements CollegeService {
                 op.put("id",College_course.getId());
                 op.put("name",College_course.getName());
                 op.put("time",College_course.getTime());
-                List<CourseTea> ct= teacherRepository.findByCourseId(courseID);
-                String TeacherName="";
-                if(ct.size()!=0){
-                    int TeaID=ct.get(0).getTeaId();
-                    User user=usRepo.findById(TeaID);
-                    TeacherName=user.getName();
-                }
-                op.put("teacher",TeacherName);
+                op.put("teacher",College_course.getTeaName());
 
                 courses.add(op);
             }
@@ -99,6 +90,7 @@ public class CollegeServiceImpl implements CollegeService {
                 JSONObject cc=new JSONObject();
                 int course_id=course.getCourseId();
                 cc.put("id",course_id);
+                //System.out.println(course_id);
                 Course someOne=courseRepository.findById(course_id);
                 cc.put("label",someOne.getName());
                 List<CollegeCourse> ex_list=collegeCourseRepository.findByCollegeIdAndCourseId(college_id,course_id);

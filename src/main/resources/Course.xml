@@ -17,6 +17,18 @@
             <basic name="introduction">
                 <column name="introduction"/>
             </basic>
+            <basic name="teaId">
+                <column name="tea_id"/>
+            </basic>
+            <basic name="teaName">
+                <column name="tea_name"/>
+            </basic>
+            <basic name="collegeId">
+                <column name="college_id"/>
+            </basic>
+            <basic name="collegeName">
+                <column name="college_name"/>
+            </basic>
         </attributes>
     </entity>
 </entity-mappings>
