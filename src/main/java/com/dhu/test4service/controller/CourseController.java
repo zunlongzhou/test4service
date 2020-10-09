@@ -2,9 +2,12 @@ package com.dhu.test4service.controller;
 
 
 import com.alibaba.fastjson.JSONArray;
+import com.dhu.test4service.pojo.College;
 import com.dhu.test4service.pojo.Course;
 import com.dhu.test4service.pojo.User;
+import com.dhu.test4service.service.CollegeService;
 import com.dhu.test4service.service.CourseService;
+import com.dhu.test4service.service.UserService;
 import com.dhu.test4service.utils.RedisUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +26,10 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
     @Autowired
+    private CollegeService collegeService;
+    @Autowired
+    private UserService userService;
+    @Autowired
     private RedisUtils redisUtils;
 
     @ApiOperation("返回所有课程信息")
@@ -35,6 +42,18 @@ public class CourseController {
     @GetMapping(value = "/findbyID")
     public Course findByID(@RequestParam("id")int id){
         return courseService.findById(id);
+    }
+
+    @ApiOperation("添加课程")
+    @GetMapping("/add")
+    public Course add(@RequestParam("nane") String name,@RequestParam("time") String time,@RequestParam("introduction") String introduction,
+                      @RequestParam("teaName") String teaName,@RequestParam("collegeName") String collegeName){
+        College college=collegeService.findByName(collegeName);
+        Integer collegeId=college.getId();
+        User user=userService.findByName(teaName);
+        Integer teaId=user.getId();
+        Course course=new Course(name,time,introduction,teaId,teaName,collegeId,collegeName);
+        return courseService.save(course);
     }
 
     @ApiOperation("返回所有课程信息-包括教师信息")

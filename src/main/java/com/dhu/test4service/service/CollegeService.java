@@ -10,6 +10,8 @@ public interface CollegeService {
 
     List<CollegeCourse> findAll();
 
+    College findByName(String name);
+
     JSONArray findAllFormat();
 
     JSONArray getAllCollegeDetail();

@@ -36,6 +36,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public Course save(Course course) {
+        return courseRepository.save(course);
+    }
+
+    @Override
     public JSONArray findAllCourseDetail(){
         JSONArray jsonarray = new JSONArray();
         List<Course> list=courseRepository.findAll();

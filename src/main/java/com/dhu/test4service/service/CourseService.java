@@ -13,6 +13,8 @@ public interface CourseService {
 
     Course findById(int id);
 
+    Course save(Course course);
+
     JSONArray findAllCourseDetail();
 
     List<User> findCourseStu(int id);

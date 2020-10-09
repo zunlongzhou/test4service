@@ -64,6 +64,12 @@ public class CollegeServiceImpl implements CollegeService {
     }
 
     @Override
+    public College findByName(String name) {
+        return collegeRepository.findByName(name);
+    }
+
+
+    @Override
     public JSONArray findAllFormat(){
         JSONArray res = new JSONArray();
         List<CollegeCourse> collegeCourses=collegeCourseRepository.findAll();

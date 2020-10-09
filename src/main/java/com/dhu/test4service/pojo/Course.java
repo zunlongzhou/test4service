@@ -128,4 +128,19 @@ public class Course {
         result = 31 * result + (collegeName != null ? collegeName.hashCode() : 0);
         return result;
     }
+
+    public Course() {
+    }
+
+
+    public Course(String name, String time, String introduction, Integer teaId, String teaName, Integer collegeId, String collegeName) {
+        this.name = name;
+        this.time = time;
+        this.introduction = introduction;
+        this.teaId = teaId;
+        this.teaName = teaName;
+        this.collegeId = collegeId;
+        this.collegeName = collegeName;
+    }
+
 }
