@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Api(tags = "课程的操作")
@@ -48,12 +49,18 @@ public class CourseController {
     @GetMapping("/add")
     public Course add(@RequestParam("name") String name,@RequestParam("time") String time,@RequestParam("introduction") String introduction,
                       @RequestParam("teaName") String teaName,@RequestParam("collegeName") String collegeName){
-        College college=collegeService.findByName(collegeName);
-        Integer collegeId=college.getId();
-        User user=userService.findByName(teaName);
-        Integer teaId=user.getId();
-        Course course=new Course(name,time,introduction,teaId,teaName,collegeId,collegeName);
-        return courseService.save(course);
+        try{
+            College college=collegeService.findByName(collegeName);
+            Integer collegeId=college.getId();
+            User user=userService.findByName(teaName);
+            Integer teaId=user.getId();
+            Course course=new Course(name,time,introduction,teaId,teaName,collegeId,collegeName);
+            return courseService.save(course);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     @ApiOperation("返回所有课程信息-包括教师信息")
