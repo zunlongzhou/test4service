@@ -46,7 +46,7 @@ public class CourseController {
 
     @ApiOperation("添加课程")
     @GetMapping("/add")
-    public Course add(@RequestParam("nane") String name,@RequestParam("time") String time,@RequestParam("introduction") String introduction,
+    public Course add(@RequestParam("name") String name,@RequestParam("time") String time,@RequestParam("introduction") String introduction,
                       @RequestParam("teaName") String teaName,@RequestParam("collegeName") String collegeName){
         College college=collegeService.findByName(collegeName);
         Integer collegeId=college.getId();

@@ -52,7 +52,7 @@ public class CourseServiceImpl implements CourseService {
             jsonObject.put("time",c.getTime());
             jsonObject.put("introduction",c.getIntroduction());
 
-            jsonObject.put("teacher",findCourseTea(c.getId()));
+            jsonObject.put("teacher",c.getTeaName());
 
             jsonarray.add(jsonObject);
         }
