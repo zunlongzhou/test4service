@@ -15,6 +15,8 @@ public interface CourseRepository extends JpaRepository<Course,Integer> {
 
     List<Course> findAll();
 
+    List<Course> findByCollegeId(int collegeid);
+
     Course findById(int id);
 
     Course save(Course course);

@@ -1,6 +1,7 @@
 package com.dhu.test4service.service.ServiceImpl;
 
 
+import com.dhu.test4service.dao.CourseExRepository;
 import com.dhu.test4service.dao.CourseRepository;
 import com.dhu.test4service.dao.CourseStuRepository;
 import com.dhu.test4service.dao.userRepository;
@@ -25,6 +26,8 @@ public class CourseServiceImpl implements CourseService {
     private userRepository userRepo;
     @Autowired
     private CourseStuRepository courseStuRepo;
+    @Autowired
+    private CourseExRepository courseExRepository;
 
 
     @Override
@@ -115,5 +118,22 @@ public class CourseServiceImpl implements CourseService {
         return res;
     }
 
+    public JSONArray getCourseAndEx(){
+        JSONArray res=new JSONArray();
+        List<Course> courses=courseRepository.findAll();
+        for(Course c:courses){
+            JSONObject course=new JSONObject();
+            int courseID=c.getId();
+            List<CourseExperiment> ex=courseExRepository.findByCourseId(courseID);
+            course.put("id",c.getId());
+            course.put("name",c.getName());
+            course.put("time",c.getTime());
+            course.put("teacher",c.getTeaName());
+            course.put("introduction",c.getIntroduction());
+            course.put("experiment",ex);
+            res.add(course);
+        }
+        return res;
+    }
 
 }

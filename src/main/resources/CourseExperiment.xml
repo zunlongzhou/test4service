@@ -8,12 +8,6 @@
             <id name="id">
                 <column name="id"/>
             </id>
-            <basic name="collegeId">
-                <column name="college_id"/>
-            </basic>
-            <basic name="collegeName">
-                <column name="college_name"/>
-            </basic>
             <basic name="courseId">
                 <column name="course_id"/>
             </basic>
@@ -22,6 +16,15 @@
             </basic>
             <basic name="experimentName">
                 <column name="experiment_name"/>
+            </basic>
+            <basic name="experimentIntro">
+                <column name="experiment_intro"/>
+            </basic>
+            <basic name="video">
+                <column name="video"/>
+            </basic>
+            <basic name="action">
+                <column name="action"/>
             </basic>
         </attributes>
     </entity>

@@ -15,17 +15,16 @@ public class ExperimentServiceImpl implements ExperimentService {
     @Autowired
     private CourseExRepository courseExRepository;
     @Override
-    public CourseExperiment addExperiment(int courseid, int exid, String experiment){
+    public CourseExperiment addExperiment(int courseid, int exid, String experiment, String intro){
         Course course=courseRepository.findById(courseid);
         CourseExperiment collegeCourse=new CourseExperiment();
         if(course==null){
             return collegeCourse;
         }
-        collegeCourse.setCollegeId(course.getCollegeId());
-        collegeCourse.setCollegeName(course.getCollegeName());
         collegeCourse.setCourseId(courseid);
         collegeCourse.setExperimentId(exid);
         collegeCourse.setExperimentName(experiment);
+        collegeCourse.setExperimentIntro(intro);
         return courseExRepository.save(collegeCourse);
     }
 }

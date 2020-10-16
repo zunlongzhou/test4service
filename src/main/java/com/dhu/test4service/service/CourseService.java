@@ -24,5 +24,7 @@ public interface CourseService {
 
     JSONArray findStuCourseDetail(int id);
 
+    JSONArray getCourseAndEx();
+
 
 }

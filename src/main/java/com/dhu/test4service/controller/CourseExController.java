@@ -18,7 +18,7 @@ public class CourseExController {
 
     @ApiOperation("新增实验")
     @GetMapping(value = "addEx")
-    public CourseExperiment findAllFormat(@RequestParam("courseid")int courseid, @RequestParam("exid")int exid, @RequestParam("experiment")String experiment){
-        return experimentService.addExperiment(courseid,exid,experiment);
+    public CourseExperiment findAllFormat(@RequestParam("courseid")int courseid, @RequestParam("exid")int exid, @RequestParam("experiment")String experiment, @RequestParam("intro")String intro){
+        return experimentService.addExperiment(courseid,exid,experiment,intro);
     }
 }

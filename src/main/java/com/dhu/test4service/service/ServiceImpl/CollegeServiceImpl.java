@@ -37,16 +37,14 @@ public class CollegeServiceImpl implements CollegeService {
             collegeDetail.put("address",co.getAddress());
             collegeDetail.put("introduction",co.getIntroduction());
 
-            List<CourseExperiment> cc= courseExRepository.findByCollegeId(co.getId());
+            List<Course> cc= courseRepository.findByCollegeId(co.getId());
             JSONArray courses=new JSONArray();
-            for(CourseExperiment temp:cc){
+            for(Course temp:cc){
                 JSONObject op=new JSONObject();
-                int courseID=temp.getCourseId();
-                Course College_course=courseRepository.findById(courseID);
-                op.put("id",College_course.getId());
-                op.put("name",College_course.getName());
-                op.put("time",College_course.getTime());
-                op.put("teacher",College_course.getTeaName());
+                op.put("id",temp.getId());
+                op.put("name",temp.getName());
+                op.put("time",temp.getTime());
+                op.put("teacher",temp.getTeaName());
 
                 courses.add(op);
             }
@@ -71,34 +69,23 @@ public class CollegeServiceImpl implements CollegeService {
     @Override
     public JSONArray findAllFormat(){
         JSONArray res = new JSONArray();
-        List<CourseExperiment> collegeCourses= courseExRepository.findAll();
-        Set<Integer> college=new HashSet<Integer>();
-        //用 set 存所有学院的信息,这里用到的两个set都是为了去重
-        for(CourseExperiment c:collegeCourses){
-            college.add(c.getCollegeId());
-        }
+        List<College> college= collegeRepository.findAll();
         //遍历学院
-        for(Integer college_id:college){
+        for(College college_id:college){
             JSONObject jsonObject=new JSONObject();
             //放学院信息
-            jsonObject.put("id",college_id);
-            List<CourseExperiment> courseList= courseExRepository.findByCollegeId(college_id);
-            jsonObject.put("label",courseList.get(0).getCollegeName());
+            jsonObject.put("id",college_id.getId());
+            jsonObject.put("label",college_id.getName());
+            List<Course> courseList= courseRepository.findByCollegeId(college_id.getId());
 
             //遍历该学院的所有课程
             JSONArray res_child=new JSONArray();
-            Set<Integer> hs_course=new HashSet<>();
-            for(CourseExperiment course:courseList){
-                if(!hs_course.add(course.getCourseId())){
-                    continue;
-                }
+            for(Course course:courseList){
                 JSONObject cc=new JSONObject();
-                int course_id=course.getCourseId();
+                int course_id=course.getId();
                 cc.put("id",course_id);
-                //System.out.println(course_id);
-                Course someOne=courseRepository.findById(course_id);
-                cc.put("label",someOne.getName());
-                List<CourseExperiment> ex_list= courseExRepository.findByCollegeIdAndCourseId(college_id,course_id);
+                cc.put("label",course.getName());
+                List<CourseExperiment> ex_list= courseExRepository.findByCourseId(course.getId());
                 JSONArray course_child=new JSONArray();
                 //遍历该学院的所有课程的所有实验
                 for(CourseExperiment ex:ex_list){

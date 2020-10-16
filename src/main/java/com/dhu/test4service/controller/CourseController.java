@@ -88,7 +88,11 @@ public class CourseController {
         return courseService.findStuCourseDetail(id);
     }
 
-
+    @ApiOperation("返回所有课程及其实验")
+    @GetMapping(value = "/getCourseAndEx")
+    public JSONArray getCourseAndEx(){
+        return courseService.getCourseAndEx();
+    }
 
     @ApiOperation("Redis的测试操作")
     @GetMapping("/redis")
