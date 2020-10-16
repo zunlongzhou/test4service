@@ -3,8 +3,8 @@ package com.dhu.test4service.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "college_course", schema = "Test4", catalog = "")
-public class CollegeCourse {
+@Table(name = "course_experiment", schema = "Test4", catalog = "")
+public class CourseExperiment {
     private int id;
     private Integer collegeId;
     private String collegeName;
@@ -77,7 +77,7 @@ public class CollegeCourse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CollegeCourse that = (CollegeCourse) o;
+        CourseExperiment that = (CourseExperiment) o;
 
         if (id != that.id) return false;
         if (collegeId != null ? !collegeId.equals(that.collegeId) : that.collegeId != null) return false;

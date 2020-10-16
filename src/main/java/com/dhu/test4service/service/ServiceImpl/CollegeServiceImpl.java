@@ -10,14 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 @Service
 public class CollegeServiceImpl implements CollegeService {
     @Autowired
-    private CollegeCourseRepository collegeCourseRepository;
+    private CourseExRepository courseExRepository;
     @Autowired
     private CourseRepository courseRepository;
     @Autowired
@@ -38,9 +37,9 @@ public class CollegeServiceImpl implements CollegeService {
             collegeDetail.put("address",co.getAddress());
             collegeDetail.put("introduction",co.getIntroduction());
 
-            List<CollegeCourse> cc=collegeCourseRepository.findByCollegeId(co.getId());
+            List<CourseExperiment> cc= courseExRepository.findByCollegeId(co.getId());
             JSONArray courses=new JSONArray();
-            for(CollegeCourse temp:cc){
+            for(CourseExperiment temp:cc){
                 JSONObject op=new JSONObject();
                 int courseID=temp.getCourseId();
                 Course College_course=courseRepository.findById(courseID);
@@ -59,8 +58,8 @@ public class CollegeServiceImpl implements CollegeService {
     }
 
     @Override
-    public List<CollegeCourse> findAll(){
-        return collegeCourseRepository.findAll();
+    public List<CourseExperiment> findAll(){
+        return courseExRepository.findAll();
     }
 
     @Override
@@ -72,10 +71,10 @@ public class CollegeServiceImpl implements CollegeService {
     @Override
     public JSONArray findAllFormat(){
         JSONArray res = new JSONArray();
-        List<CollegeCourse> collegeCourses=collegeCourseRepository.findAll();
+        List<CourseExperiment> collegeCourses= courseExRepository.findAll();
         Set<Integer> college=new HashSet<Integer>();
         //用 set 存所有学院的信息,这里用到的两个set都是为了去重
-        for(CollegeCourse c:collegeCourses){
+        for(CourseExperiment c:collegeCourses){
             college.add(c.getCollegeId());
         }
         //遍历学院
@@ -83,13 +82,13 @@ public class CollegeServiceImpl implements CollegeService {
             JSONObject jsonObject=new JSONObject();
             //放学院信息
             jsonObject.put("id",college_id);
-            List<CollegeCourse> courseList=collegeCourseRepository.findByCollegeId(college_id);
+            List<CourseExperiment> courseList= courseExRepository.findByCollegeId(college_id);
             jsonObject.put("label",courseList.get(0).getCollegeName());
 
             //遍历该学院的所有课程
             JSONArray res_child=new JSONArray();
             Set<Integer> hs_course=new HashSet<>();
-            for(CollegeCourse course:courseList){
+            for(CourseExperiment course:courseList){
                 if(!hs_course.add(course.getCourseId())){
                     continue;
                 }
@@ -99,10 +98,10 @@ public class CollegeServiceImpl implements CollegeService {
                 //System.out.println(course_id);
                 Course someOne=courseRepository.findById(course_id);
                 cc.put("label",someOne.getName());
-                List<CollegeCourse> ex_list=collegeCourseRepository.findByCollegeIdAndCourseId(college_id,course_id);
+                List<CourseExperiment> ex_list= courseExRepository.findByCollegeIdAndCourseId(college_id,course_id);
                 JSONArray course_child=new JSONArray();
                 //遍历该学院的所有课程的所有实验
-                for(CollegeCourse ex:ex_list){
+                for(CourseExperiment ex:ex_list){
                     JSONObject ex_obj=new JSONObject();
                     ex_obj.put("id",ex.getExperimentId());
                     ex_obj.put("label",ex.getExperimentName());

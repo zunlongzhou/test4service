@@ -3,6 +3,7 @@ package com.dhu.test4service.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.dhu.test4service.pojo.College;
+import com.dhu.test4service.pojo.CourseExperiment;
 import com.dhu.test4service.pojo.Course;
 import com.dhu.test4service.pojo.User;
 import com.dhu.test4service.service.CollegeService;
@@ -86,6 +87,8 @@ public class CourseController {
     public JSONArray getSCDetail(@RequestParam("id")int id){
         return courseService.findStuCourseDetail(id);
     }
+
+
 
     @ApiOperation("Redis的测试操作")
     @GetMapping("/redis")

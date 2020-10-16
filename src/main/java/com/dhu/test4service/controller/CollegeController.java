@@ -2,7 +2,7 @@ package com.dhu.test4service.controller;
 
 
 import com.alibaba.fastjson.JSONArray;
-import com.dhu.test4service.pojo.CollegeCourse;
+import com.dhu.test4service.pojo.CourseExperiment;
 import com.dhu.test4service.service.CollegeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +24,7 @@ public class CollegeController {
 
     @ApiOperation("查找学院课程的所有信息")
     @GetMapping(value = "findAll")
-    public List<CollegeCourse> findAll(){
+    public List<CourseExperiment> findAll(){
         return collegeService.findAll();
     }
 

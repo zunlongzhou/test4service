@@ -1,5 +1,6 @@
 package com.dhu.test4service.service;
 
+import com.dhu.test4service.pojo.CourseExperiment;
 import com.dhu.test4service.pojo.Course;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -22,4 +23,6 @@ public interface CourseService {
     List<Boolean> findStuCourse(int id);
 
     JSONArray findStuCourseDetail(int id);
+
+
 }
