@@ -108,10 +108,12 @@ public class CourseServiceImpl implements CourseService {
             JSONObject course=new JSONObject();
             int courseID=cs.getCourseId();
             Course c=courseRepository.findById(courseID);
+            List<CourseExperiment> ex=courseExRepository.findByCourseId(courseID);
             course.put("id",c.getId());
             course.put("name",c.getName());
             course.put("time",c.getTime());
             course.put("teacher",c.getTeaName());
+            course.put("experiment",ex);
             res.add(course);
         }
 

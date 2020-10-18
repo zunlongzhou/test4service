@@ -15,7 +15,7 @@ public class ExperimentServiceImpl implements ExperimentService {
     @Autowired
     private CourseExRepository courseExRepository;
     @Override
-    public CourseExperiment addExperiment(int courseid, int exid, String experiment, String intro){
+    public CourseExperiment addExperiment(int courseid, int exid, String experiment, String intro,String action){
         Course course=courseRepository.findById(courseid);
         CourseExperiment collegeCourse=new CourseExperiment();
         if(course==null){
@@ -25,6 +25,7 @@ public class ExperimentServiceImpl implements ExperimentService {
         collegeCourse.setExperimentId(exid);
         collegeCourse.setExperimentName(experiment);
         collegeCourse.setExperimentIntro(intro);
+        collegeCourse.setAction(action);
         return courseExRepository.save(collegeCourse);
     }
 }
